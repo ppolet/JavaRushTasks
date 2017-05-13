@@ -11,27 +11,36 @@ public class Solution {
     public static interface Alive {
         Object containsBones();
     }
+
     public static class BodyPart implements Alive {
         private String name;
+
         public BodyPart(String name) {
             this.name = name;
         }
+
         public Object containsBones() {
             return "Yes";
         }
+
         public String toString() {
-            if(containsBones().equals("Yes")) return name + " содержит кости";
-            else return name + " не содержит кости";
+            if (containsBones().equals("Yes")) {
+                return name + " содержит кости"; }
+            else {
+                return name + " не содержит кости";
+            }
         }
     }
+
     public static class Finger extends BodyPart {
         private boolean isFoot;
         public Finger(String name, boolean isFoot) {
             super(name);
             this.isFoot = isFoot;
         }
+
         public Object containsBones() {
-            if (super.containsBones().equals("Yes") && !isFoot) return "Yes"; else return "No";
+            if (super.containsBones().equals("Yes") && !isFoot ) {return "Yes";} else return "No";
         }
     }
     public static void main(String[] args)
@@ -40,9 +49,11 @@ public class Solution {
         printlnBodyParts();
         printlnAlives();
     }
+
     private static void printlnAlives() {
         System.out.println(new BodyPart("Рука").containsBones());
     }
+
     private static void printlnBodyParts() {
         List<BodyPart> bodyParts = new ArrayList<BodyPart>(5);
         bodyParts.add(new BodyPart("Рука"));
@@ -51,6 +62,7 @@ public class Solution {
         bodyParts.add(new BodyPart("Тело"));
         System.out.println(bodyParts.toString());
     }
+
     private static void printlnFingers() {
         List<Finger> fingers = new ArrayList<Finger>(5);
         fingers.add(new Finger("Большой", true));
@@ -61,4 +73,3 @@ public class Solution {
         System.out.println(fingers.toString());
     }
 }
-

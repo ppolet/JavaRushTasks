@@ -11,33 +11,6 @@ import java.io.IOException;
 public class Solution {
     public static void main(String[] args) throws IOException {
         //напиште тут ваш код
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        String str = reader.readLine();
-        while (!str.toString().equals("exit")) {
-
-            try {
-
-                Double d= Double.valueOf(str);
-                if (str.contains("."))
-                    print(34.4d);
-
-                Short sh = Short.valueOf(str);
-                if (sh > 0 && sh < 128)
-                    print(sh);
-                 else {
-                    Integer integer = Integer.valueOf(str);
-                    print(integer);
-                }
-            }
-            catch (NumberFormatException e)
-            {
-                print(str);
-            }
-
-            str = reader.readLine();
-        }
     }
 
     public static void print(Double value) {

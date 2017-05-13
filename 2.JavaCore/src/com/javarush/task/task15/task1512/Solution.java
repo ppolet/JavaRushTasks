@@ -11,13 +11,13 @@ public class Solution {
     }
 
     public static class NakedCat {
-        public NakedCat() {
 
-        }
     }
 
     public static class NormalCat extends NakedCat {
+        public NormalCat() {
 
+        }
 
         public NormalCat(String name) {
             System.out.println("My name is " + name);
@@ -30,8 +30,7 @@ public class Solution {
 
     public static class SiamCat extends NormalCat {
         public SiamCat(String name) {
-            super("name");
-
+            super(name);
         }
     }
 }
