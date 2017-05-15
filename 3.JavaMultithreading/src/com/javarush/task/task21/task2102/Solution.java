@@ -22,6 +22,7 @@ import java.lang.reflect.Modifier;
 /* Сравниваем модификаторы
 Реализовать логику метода isAllModifiersContainSpecificModifier, который проверяет,
 содержит ли переданный параметр allModifiers значение конкретного модификатора specificModifier
+
 */
 public class Solution {
     public static void main(String[] args) {
