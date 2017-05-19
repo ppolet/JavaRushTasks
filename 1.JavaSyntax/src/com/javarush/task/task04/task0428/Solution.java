@@ -4,53 +4,30 @@ package com.javarush.task.task04.task0428;
 Положительное число
 */
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.io.*;
+import java.util.ArrayList;
 
-public class Solution
-{
-    public static void main(String[] args) throws Exception
-    {
-        //напишите тут ваш код
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String number1 = reader.readLine();
-        int num1 = Integer.parseInt(number1);
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader av=new BufferedReader(new InputStreamReader(System.in));
+        int a=Integer.parseInt(av.readLine());
+        int b=Integer.parseInt(av.readLine());
+        int c=Integer.parseInt(av.readLine());
+        ArrayList<Integer> arrayList= new ArrayList<>();
+        arrayList.add(a);
+        arrayList.add(b);
+        arrayList.add(c);
 
-        String number2 = reader.readLine();
-        int num2 = Integer.parseInt(number2);
-
-        String number3 = reader.readLine();
-        int num3 = Integer.parseInt(number3);
-
-        int PosCount=0;
-        int NegCount=0;
-
-        if(num1>=0)
+        int count=0;
+        for(int i:arrayList)
         {
-            PosCount++;
-        }
-        if(num2>=0)
-        {
-            PosCount++;
-        }
-        if(num3>=0)
-        {
-            PosCount++;
-        }
+            if(i>0)
+                count++;
 
-        if(num1<0)
-        {
-            NegCount++;
         }
-        if(num2<0)
-        {
-            NegCount++;
-        }
-        if(num3<0)
-        {
-            NegCount++;
-        }
+        System.out.println(count);
 
-        System.out.println("количество отрицательных чисел: "+NegCount);
-        System.out.println("количество положительных чисел: "+PosCount);
     }
 }
