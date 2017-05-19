@@ -4,53 +4,51 @@ package com.javarush.task.task13.task1326;
 Сортировка четных чисел из файла
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Scanner;
 
-public class Solution {
-    public static void main(String[] args) throws IOException {
+public class Solution
+{
+    public static void main(String[] args) throws IOException
+    {
         // напишите тут ваш код
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        FileInputStream fname = new FileInputStream(br.readLine());
+        Scanner s = new Scanner(fname);
+        int temp = 1;
+        int x;
+        ArrayList<Integer> list = new ArrayList<>();
 
-        BufferedReader reader= new BufferedReader(new InputStreamReader(System.in));
-
-
-            File file= new File(reader.rea
-                    dLine());
-            FileReader reader1= new FileReader(file);
-            BufferedReader bf=new BufferedReader(reader1);
-
-
-            ArrayList<Integer> arrayList= new ArrayList<>();
-
-            while (bf.ready())
+        while (s.hasNextInt())
+        {
+            temp = s.nextInt();
+            if (temp %2 == 0)
             {
-                arrayList.add(Integer.valueOf(bf.readLine()));
+                list.add(temp);
             }
+        }
 
-            ArrayList<Integer> arrayList2= new ArrayList<>();
-
-
-            for (int a:arrayList)
+        for (int i = 0; i < list.size(); i++)
+        {
+            for (int j = i; j < list.size(); j++)
             {
-                if(a%2==0&&a!=0)
-                    arrayList2.add(a);
-
+                if (list.get(i) > list.get(j))
+                {
+                    x = list.get(j);
+                    list.set(j, list.get(i));
+                    list.set(i, x);
+                }
             }
+        }
 
-            System.out.println(arrayList2);
-
-            for (int a:arrayList2)
-            {
-                System.out.println(a);
-
-            }
-
-            reader.close();
-            reader1.close();
-            bf.close();
-
-
-
+        fname.close();
+        for (int h = 0; h <  list.size(); h++)
+        {
+            System.out.println(list.get(h));
+        }
     }
 }

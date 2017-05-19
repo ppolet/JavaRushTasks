@@ -10,18 +10,17 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) throws IOException {
         // напишите тут ваш код
-        //add your code here
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        FileInputStream in = new FileInputStream(br.readLine());
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        while (in.available()>0) {
-            System.out.print((char)in.read());
+        InputStream in = new FileInputStream(reader.readLine());
+        while (in.available() > 0) {
+            System.out.print((char) in.read());
         }
-
         in.close();
-        br.close();
+        reader.close();
+
     }
 
 
-    }
+}
