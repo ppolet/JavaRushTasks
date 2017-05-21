@@ -10,8 +10,7 @@ public class Solution {
 
     public static void salary(int a) {
         //напишите тут ваш код
-        a+=100;
-        System.out.println("Твоя зарплата составляет:"+ a +"долларов в месяц.");
-
+          int count=a+100;
+        System.out.println("Твоя зарплата составляет: "+count +" долларов в месяц.");
     }
 }

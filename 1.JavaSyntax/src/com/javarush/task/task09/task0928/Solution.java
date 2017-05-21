@@ -4,6 +4,17 @@ import java.io.*;
 
 /* 
 Код не компилится…
+Программа вводит два имени файла. И копирует первый файл на место заданное вторым именем.
+
+
+Требования:
+1. Программа должна считывать имена файлов.
+2. Программа должна копировать содержимое первого файла во второй.
+3. Программа должна выводить количество скопированных байт.
+4. В методе main должен вызывать метод getInputStream.
+5. Метод getInputStream изменять нельзя.
+6. В методе main должен вызывать метод getOutputStream.
+7. Метод getOutputStream изменять нельзя.
 */
 
 public class Solution {
@@ -13,11 +24,11 @@ public class Solution {
         String sourceFileName = reader.readLine();
         String destinationFileName = reader.readLine();
 
-        InputStream fileInputStream = getOutputStream(sourceFileName);
-        InputStream fileOutputStream = getOutputStream(destinationFileName);
+        InputStream fileInputStream = getInputStream(sourceFileName);
+        OutputStream fileOutputStream = getOutputStream(destinationFileName);
 
         int count = 0;
-        while (fileInputStream.available() > 0) ;
+        while (fileInputStream.available() > 0) // точку с запятой лишняя!!!!!!!
         {
             int data = fileInputStream.read();
             fileOutputStream.write(data);
