@@ -127,9 +127,7 @@ public class Room {
      * Метод вызывается, когда мышь съели
      */
     public void eatMouse() {
-
         createMouse();
-        
     }
 
     /**
@@ -150,7 +148,6 @@ public class Room {
         game.snake.setDirection(SnakeDirection.DOWN);
         game.createMouse();
         game.run();
-
     }
 
     private int initialDelay = 520;
