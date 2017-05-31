@@ -15,6 +15,7 @@ public class Solution {
         public String getName() {
             return "Я - корова";
         }
+
     }
 
     public static class Whale extends Cow {

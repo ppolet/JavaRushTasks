@@ -41,31 +41,12 @@ public class Solution {
         private List<String> result = new ArrayList<String>();
 
         public void run() {
-            try
-            {
-                while (!isInterrupted())
-                {
-                    String word = reader.readLine();
-                    result.add(word);
-                    countReadStrings++;
-                    System.out.println(countReadStrings);
-                }
-
-            }catch (IOException e)
-            {
-
-            }
-
+            //add your code here - добавьте код тут
         }
 
         @Override
         public String toString() {
-            String s = result.toString();
-            return s.substring(1, s.length()-1);
+            return result.toString();
         }
     }
-        }
-
-
-
-
+}
