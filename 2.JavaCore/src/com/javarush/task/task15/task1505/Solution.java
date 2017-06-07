@@ -15,13 +15,11 @@ public class Solution {
     public static class BodyPart implements Alive {
         private String name;
 
-        public BodyPart(String name)
-        {
+        public BodyPart(String name) {
             this.name = name;
         }
 
         public boolean containsBones() {
-
             return true;
         }
 

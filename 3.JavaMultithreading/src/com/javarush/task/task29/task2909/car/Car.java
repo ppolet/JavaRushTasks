@@ -2,7 +2,7 @@ package com.javarush.task.task29.task2909.car;
 
 import java.util.Date;
 
-public class Car {
+public abstract class Car {
 
 
     static public final int TRUCK = 0;
@@ -99,12 +99,7 @@ public class Car {
 
     public void fastenDriverBelt() {
     }
+    public abstract int getMaxSpeed();
 
-    public int getMaxSpeed() {
-        if (type == TRUCK)
-            return 80;
-        if (type == SEDAN)
-            return 120;
-        return 90;
-    }
+
 }

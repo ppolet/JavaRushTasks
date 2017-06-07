@@ -1,14 +1,17 @@
 package com.javarush.task.task20.task2018;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /* 
 Найти ошибки
 */
-public class Solution {
+public class Solution implements Serializable {
     public static class A {
         protected String name = "A";
-
+        public A() {}
         public A(String name) {
             this.name += name;
         }
@@ -20,29 +23,12 @@ public class Solution {
             this.name += name;
         }
         private void writeObject(ObjectOutputStream out) throws IOException {
+            out.defaultWriteObject();
             out.writeObject(name);
         }
         private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+          in.defaultReadObject();
             name = (String)in.readObject();
         }
-
-
-    }
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(arrayOutputStream);
-
-        Solution solution = new Solution();
-        B b = solution.new B("B2");
-        System.out.println(b.name);
-
-        oos.writeObject(b);
-
-        ByteArrayInputStream arrayInputStream = new ByteArrayInputStream(arrayOutputStream.toByteArray());
-        ObjectInputStream ois = new ObjectInputStream(arrayInputStream);
-
-        B b1 = (B)ois.readObject();
-        System.out.println(b1.name);
     }
 }
