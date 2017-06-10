@@ -21,9 +21,6 @@ public class ServiceLocator {
      * @return Object mapped to name in context
      */
     public static Service getService(String jndiName) {
-
-
-
         return null;
     }
 }
