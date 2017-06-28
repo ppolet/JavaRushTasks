@@ -10,9 +10,23 @@ public class ConsumerTask implements Runnable {
     }
 
     public void run() {
+
         while (!stopped) {
-            transferObject.get();
+            if (transferObject != null)
+                synchronized (transferObject) {
+                    while (!transferObject.isValuePresent) {
+                        try {
+                            transferObject.wait();
+                        } catch (InterruptedException ignore) {
+
+                        }
+                    }
+                    transferObject.get();
+                    transferObject.isValuePresent = false;
+                    transferObject.notifyAll();
+                }
         }
+
     }
 
     public void stop() {

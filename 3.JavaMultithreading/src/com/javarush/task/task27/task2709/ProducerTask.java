@@ -15,7 +15,18 @@ public class ProducerTask implements Runnable {
 
     public void run() {
         while (!stopped) {
-            transferObject.put(i.incrementAndGet());
+            if (transferObject != null)
+                synchronized (transferObject) {
+                    while (transferObject.isValuePresent) {
+                        try {
+                            transferObject.wait();
+                        } catch (InterruptedException ignore) {
+                        }
+                    }
+                    transferObject.put(i.incrementAndGet());
+                    transferObject.isValuePresent = true;
+                    transferObject.notifyAll();
+                }
         }
     }
 
