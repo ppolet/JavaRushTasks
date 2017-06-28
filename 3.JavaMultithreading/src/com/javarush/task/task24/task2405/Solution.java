@@ -15,21 +15,16 @@ public class Solution implements Action {
         public void someAction() {
             //!!!!! All changes have to be here
             //!!!!! Все изменения должны быть только тут
-
-
-
         }
     };
 
 
-    public Solution(int param
-    ) {
+    public Solution(int param) {
         this.param = param;
     }
 
     @Override
     public void someAction() {
-
         solutionAction.someAction();
     }
 
