@@ -11,24 +11,29 @@ public class ConsoleHelper {
 
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    static void writeMessage(String message) {
+
+    public static void writeMessage(String message) {
         System.out.println(message);
     }
 
-    public static   String readString() {
-        String string;
+
+    public static String readString() {
+
+        String message;
 
         while (true) {
+
             try {
-                string = reader.readLine();
+                message = reader.readLine();
                 break;
+
             } catch (IOException e) {
                 System.out.println("Произошла ошибка при попытке ввода текста. Попробуйте еще раз.");
             }
         }
-        return string;
-
+        return message;
     }
+
 
     public static int readInt() {
 
@@ -47,7 +52,5 @@ public class ConsoleHelper {
         return i;
     }
 }
-
-
 
 

@@ -8,6 +8,12 @@ import java.awt.event.ActionEvent;
 /**
  * Created by Mike on 30.06.2017.
  */
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
+/**
+ * Класс возврата действия RedoAction
+ */
 public class RedoAction extends AbstractAction {
 
     private View view;
@@ -18,6 +24,6 @@ public class RedoAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        view.redo();
     }
 }
