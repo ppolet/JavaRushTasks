@@ -7,25 +7,18 @@ import java.lang.reflect.Method;
  * Created by Mike on 06.05.2017.
  */
 public class CustomInvocationHandler implements InvocationHandler {
-    private SomeInterfaceWithMethods someInterfaceWithMethods;
 
-    public CustomInvocationHandler(SomeInterfaceWithMethods someInterfaceWithMethods) {
-        this.someInterfaceWithMethods = someInterfaceWithMethods;
+    private SomeInterfaceWithMethods original;
+
+    public CustomInvocationHandler(SomeInterfaceWithMethods original) {
+        this.original = original;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        someInterfaceWithMethods = new SomeInterfaceWithMethodsImpl();
-        if (method.getName().endsWith("WithIntArg")) {
-            System.out.println(method.getName() + " in");
-            method.invoke(someInterfaceWithMethods, args);
-            System.out.println(method.getName() + " out");
-        }
-        if (method.getName().endsWith("MethodWithoutArgs")) {
-            System.out.println(method.getName() + " in");
-            method.invoke(someInterfaceWithMethods);
-            System.out.println(method.getName() + " out");
-        }
-        return null;
+        System.out.println(method.getName() + " in");
+        Object result = method.invoke(original, args);
+        System.out.println(method.getName() + " out");
+        return result;
     }
 }

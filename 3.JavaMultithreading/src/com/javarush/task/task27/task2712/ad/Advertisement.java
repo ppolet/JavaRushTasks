@@ -4,12 +4,12 @@ package com.javarush.task.task27.task2712.ad;
  * Created by Mike on 03.07.2017.
  */
 public class Advertisement {
-    private Object content; //видео
-    private String name; //название
-    private long initialAmount; //начальная сумма, стоимость рекламы в копейках
-    private int hits; //количество оплаченных показов
-    private int duration; // продолжительность в секундах
-    private long amountPerOneDisplaying; //стоимость одного показа рекламного объявления в копейках
+    private Object content;
+    private String name;
+    private long initialAmount;
+    private int hits;
+    private int duration;
+    private long amountPerOneDisplaying;
 
     public Advertisement(Object content, String name, long initialAmount, int hits, int duration) {
         this.content = content;
@@ -17,7 +17,7 @@ public class Advertisement {
         this.initialAmount = initialAmount;
         this.hits = hits;
         this.duration = duration;
-        this.amountPerOneDisplaying = initialAmount/hits;
+        this.amountPerOneDisplaying = initialAmount / hits;
     }
 
     public String getName() {
@@ -33,16 +33,8 @@ public class Advertisement {
     }
 
     public void revalidate() {
-        if (hits <= 0) throw new UnsupportedOperationException();
-        else hits--;
-    }
-
-    @Override
-    public String toString() {
-        return name + " is displaying... " + getAmountPerOneDisplaying() + ", " + getAmountPerOneDisplaying()/duration*1000;
-    }
-
-    public int getHits() {
-        return hits;
+        if (hits <= 0)
+            throw new UnsupportedOperationException();
+        hits--;
     }
 }

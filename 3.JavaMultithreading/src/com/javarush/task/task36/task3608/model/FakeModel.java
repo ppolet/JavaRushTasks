@@ -6,33 +6,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Mike on 26.05.2017.
+ * Created by Mike on 13.07.2017.
  */
 public class FakeModel implements Model {
 
-
     private ModelData modelData = new ModelData();
-
-    public void setModelData(ModelData modelData) {
-        this.modelData = modelData;
-    }
-
-
-    @Override
-    public void loadUsers() {
-
-        List<User> usr = new ArrayList<>();
-        usr.add(new User("Ivan", 1, 1));
-        usr.add(new User("Petr", 2, 3));
-
-
-        modelData.setUsers(usr);
-
-    }
 
 
     @Override
     public ModelData getModelData() {
         return modelData;
     }
+
+    @Override
+    public void loadUsers() {
+
+        //test data
+        List<User> usr = new ArrayList<>();
+
+        usr.add(new User("Ivan", 1, 1));
+        usr.add(new User("Petr", 2, 3));
+        usr.add(new User("Isidor", 3, 2));
+
+        modelData.setUsers(usr);
+    }
+
+
+    @Override
+    public void loadUserById(long userId) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void deleteUserById(long id) {
+
+    }
+
+    @Override
+    public void loadDeletedUsers() {
+        throw new UnsupportedOperationException();
+    }
+
+
 }

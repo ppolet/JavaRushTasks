@@ -21,30 +21,12 @@ public class Tablet extends Observable {
         this.number = number;
     }
 
-    public Order createOrder() {
+    public Order createOrder() throws IOException {
         Order order = null;
-        try
-        {
-            order = new Order(this);
-            ConsoleHelper.writeMessage(order.toString());
-            if(!order.isEmpty())
-            {
-                try
-                {
-                   // new AdvertisementManager(order.getTotalCookingTime()*60).processVideos();
-                }
-                catch (NoVideoAvailableException e)
-                {
-                    logger.log(Level.INFO, "No video is available for the order " + order);
-                }
-                setChanged();
-                notifyObservers(order);
-            }
-        }
-        catch (IOException e)
-        {
-            logger.log(Level.SEVERE, "Console is unavailable.");
-        }
+        order = new Order(this);
+        AdvertisementManager advertisementManager= new AdvertisementManager((order.getTotalCookingTime() * 60));
+        advertisementManager.processVideos();
+
         return order;
     }
 

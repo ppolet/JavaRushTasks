@@ -4,11 +4,13 @@ public class ConvertableBook implements Convertable<String> {
     private String name;
 
     public ConvertableBook(String name) {
+
         this.name = name;
     }
 
     @Override
     public String getKey() {
+
         return name;
     }
 
