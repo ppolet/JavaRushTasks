@@ -101,7 +101,7 @@ public class BotClient extends Client {
     }
 
     @Override
-    protected boolean shouldSentTextFromConsole() {
+    protected boolean shouldSendTextFromConsole() {
         //Он должен всегда возвращать false. Мы не хотим, чтобы бот отправлял текст введенный в консоль.
         return false;
     }

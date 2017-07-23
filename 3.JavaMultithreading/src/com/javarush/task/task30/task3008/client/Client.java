@@ -55,7 +55,7 @@ public class Client {
             while (clientConnected) {
                 String message;
                 if (!(message = ConsoleHelper.readString()).equals("exit")) {
-                    if (shouldSentTextFromConsole()) {
+                    if (shouldSendTextFromConsole()) {
                         sendTextMessage(message);
                     }
                 } else {
@@ -85,6 +85,8 @@ public class Client {
     }
 
 
+
+
     /** Должен запрашивать и возвращать имя пользователя **/
     protected String getUserName() {
 
@@ -93,7 +95,7 @@ public class Client {
     }
 
 
-    protected boolean shouldSentTextFromConsole() {
+    protected boolean shouldSendTextFromConsole() {
 
         return true;
     }

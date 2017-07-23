@@ -8,15 +8,11 @@ import com.javarush.task.task36.task3608.view.UsersView;
 /**
  * Created by Mike on 19.06.2017.
  */
-public class Controller {
 
+public class Controller {
     private Model model;
     private UsersView usersView;
     private EditUserView editUserView;
-
-    public EditUserView getEditUserView() {
-        return editUserView;
-    }
 
     public void setEditUserView(EditUserView editUserView) {
         this.editUserView = editUserView;
@@ -26,9 +22,19 @@ public class Controller {
         this.model = model;
     }
 
-    public void setUsersView(UsersView usersView) {
+    public void onShowAllUsers() {
+        model.loadUsers();
 
-        this.usersView = usersView;
+        usersView.refresh(model.getModelData());
+    }
+
+    public void onShowAllDeletedUsers() {
+        model.loadDeletedUsers();
+        usersView.refresh(model.getModelData());
+    }
+    public void onOpenUserEditForm(long userId) {
+        model.loadUserById(userId);
+        editUserView.refresh(model.getModelData());
     }
 
     public void onUserDelete(long id) {
@@ -36,22 +42,13 @@ public class Controller {
         usersView.refresh(model.getModelData());
     }
 
-    public void onShowAllDeletedUsers() {
-        model.loadDeletedUsers();
+    public void onUserChange(String name, long id, int level)
+    {
+        model.changeUserData(name,id,level);
         usersView.refresh(model.getModelData());
-
     }
 
-
-    public void onShowAllUsers() {
-
-        model.loadUsers();
-        usersView.refresh(model.getModelData());
-
-    }
-
-    public void onOpenUserEditForm(long userId) {
-        model.loadUserById(userId);
-        editUserView.refresh(model.getModelData());
+    public void setUsersView(UsersView usersView) {
+        this.usersView = usersView;
     }
 }

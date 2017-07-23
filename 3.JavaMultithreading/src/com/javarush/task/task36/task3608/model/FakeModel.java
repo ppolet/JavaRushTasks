@@ -3,34 +3,30 @@ package com.javarush.task.task36.task3608.model;
 import com.javarush.task.task36.task3608.bean.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Mike on 13.07.2017.
  */
-public class FakeModel implements Model {
-
+public class FakeModel implements Model{
     private ModelData modelData = new ModelData();
-
 
     @Override
     public ModelData getModelData() {
-        return modelData;
+        return this.modelData;
     }
 
     @Override
     public void loadUsers() {
-
-        //test data
-        List<User> usr = new ArrayList<>();
-
-        usr.add(new User("Ivan", 1, 1));
-        usr.add(new User("Petr", 2, 3));
-        usr.add(new User("Isidor", 3, 2));
-
-        modelData.setUsers(usr);
+        modelData.setUsers(Arrays.asList(new User("A", 1, 1),
+                new User("B", 2, 1)));
     }
 
+    @Override
+    public void loadDeletedUsers() {
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     public void loadUserById(long userId) {
@@ -39,13 +35,11 @@ public class FakeModel implements Model {
 
     @Override
     public void deleteUserById(long id) {
-
-    }
-
-    @Override
-    public void loadDeletedUsers() {
         throw new UnsupportedOperationException();
     }
 
 
+    public void changeUserData(String name, long id, int level) {
+        throw new UnsupportedOperationException();
+    }
 }

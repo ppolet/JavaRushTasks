@@ -139,9 +139,11 @@ public class Space
                 bomb.die();
             }
 
-
+            if (bomb.getY() >= height)
+                bomb.die();
         }
     }
+
 
     /**
      * Проверяем рокеты.
