@@ -10,5 +10,3 @@ public class Zombie extends Character {
         return id;
     }
 }
-
-

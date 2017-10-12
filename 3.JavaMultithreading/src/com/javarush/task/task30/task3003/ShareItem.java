@@ -22,29 +22,23 @@ public class ShareItem {
         this.itemId = itemId;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public int getItemId() {
-        return itemId;
+    @Override
+    public String toString() {
+        return "ShareItem{" +
+                "description='" + description + '\'' +
+                ", itemId=" + itemId +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         ShareItem shareItem = (ShareItem) o;
 
-        if (itemId != shareItem.itemId)
-            return false;
-        if (description != null ? !description.equals(shareItem.description) : shareItem.description != null)
-            return false;
-
-        return true;
+        if (itemId != shareItem.itemId) return false;
+        return description != null ? description.equals(shareItem.description) : shareItem.description == null;
     }
 
     @Override
@@ -54,11 +48,11 @@ public class ShareItem {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "ShareItem{" +
-                "description='" + description + '\'' +
-                ", itemId=" + itemId +
-                '}';
+    public String getDescription() {
+        return description;
+    }
+
+    public int getItemId() {
+        return itemId;
     }
 }

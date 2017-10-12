@@ -15,14 +15,12 @@ public class Consumer implements Runnable {
     @Override
     public void run() {
         try {
-            Thread.sleep(500);
-            while (!Thread.currentThread().isInterrupted()) {
-                ShareItem item = queue.take();
-                System.out.println("Processing " + item.toString());
+            Thread.sleep(450);
+            while (!Thread.currentThread().isInterrupted()){
+                ShareItem item = this.queue.take();
+                System.out.format("Processing %s%n", item.toString());
             }
-        }
-        catch (InterruptedException e) {
-
+        } catch (InterruptedException e) {
         }
     }
 }

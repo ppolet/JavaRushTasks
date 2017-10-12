@@ -7,28 +7,24 @@ public class Producer implements Runnable {
     private TransferQueue<ShareItem> queue;
 
     public Producer(TransferQueue<ShareItem> queue) {
-
         this.queue = queue;
     }
 
     @Override
     public void run() {
-        for (int i = 1; i <= 9; i++) {
-            if (Thread.currentThread().isInterrupted()) {
-                return;
-            }
-            System.out.format("Элемент 'ShareItem-%d' добавленn", i);
-            queue.offer(new ShareItem("ShareItem-"+i, i));
-            try {
+
+        try {
+            for (int i = 1; i < 10; i++) {
+                if (Thread.currentThread().isInterrupted()) break;
+
+                System.out.format("Элемент 'ShareItem-%s' добавлен%n", i);
+                this.queue.offer(new ShareItem("ShareItem-" + i, i));
                 Thread.sleep(100);
-            }
-            catch (InterruptedException e) {
+
+                if (this.queue.hasWaitingConsumer()) System.out.format("Consumer в ожидании!%n");
 
             }
-
-            if (queue.hasWaitingConsumer()) {
-                System.out.println("Consumer в ожидании!");
-            }
+        } catch (Exception e) {
         }
     }
 }

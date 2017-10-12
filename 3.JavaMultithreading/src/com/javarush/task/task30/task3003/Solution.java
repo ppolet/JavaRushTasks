@@ -6,13 +6,12 @@ import java.util.concurrent.TransferQueue;
 /* 
 Экономим время
 */
-
 public class Solution {
     /*
-    1. Создайте класс Producer. Для этого на красном имени класса нажмите Alt+Enter -> Create Class ...
-    2. Станьте на имени аргумента в конструкторе (queue) и нажмите Alt+Enter -> Create Field for Parameter 'queue' -> Enter -> Enter
-    3. Станьте на подчеркнутой строке - описании класса. Далее Alt+Enter -> Implement Methods -> Enter
-    4. Проделайте п.1-3 для класса Consumer
+    1. Создай класс Producer. Для этого на красном имени класса нажми Alt+Enter -> Create Class ...
+    2. Стань на имени аргумента в конструкторе (queue) и нажми Alt+Enter -> Create Field for Parameter 'queue' -> Enter -> Enter. Имя поля - queue.
+    3. Стань на подчеркнутой строке - описании класса. Далее Alt+Enter -> Implement Methods -> Enter.
+    4. Проделай п.1-3 для класса Consumer.
      */
 
     public static void main(String[] args) throws InterruptedException {

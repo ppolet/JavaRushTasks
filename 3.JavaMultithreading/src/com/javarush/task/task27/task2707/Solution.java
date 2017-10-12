@@ -3,8 +3,6 @@ package com.javarush.task.task27.task2707;
 /* 
 Определяем порядок захвата монитора
 */
-
-
 public class Solution {
     public void someMethodWithSynchronizedBlocks(Object obj1, Object obj2) {
         //следующие 4 строки в тестах имеют другую реализацию

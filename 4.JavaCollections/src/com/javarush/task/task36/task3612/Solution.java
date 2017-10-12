@@ -9,7 +9,6 @@ import java.util.Set;
 */
 
 public class Solution {
-
     private Set<Date> dates;
     private Date lastDate;
 
@@ -21,9 +20,7 @@ public class Solution {
     }
 
     public boolean isLastDateContainsInDates() {
-
         return dates.contains(lastDate);
-
     }
 
     private void initializeDates() {
@@ -38,7 +35,8 @@ public class Solution {
 
     protected void updateLastDate(long delta) {
 
+        dates.remove(lastDate);
         lastDate.setTime(lastDate.getTime() + delta);
-
+        dates.add(lastDate);
     }
 }
