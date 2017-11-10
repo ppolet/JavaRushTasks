@@ -3,51 +3,57 @@ package com.javarush.task.task27.task2712.ad;
 
 import com.javarush.task.task27.task2712.ConsoleHelper;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Mike on 03.07.2017.
  */
 public class AdvertisementManager {
     private final AdvertisementStorage storage = AdvertisementStorage.getInstance();
-    private int timeSeconds;
+    private int timeSeconds;   //время выполнения заказа поваром
 
     public AdvertisementManager(int timeSeconds) {
         this.timeSeconds = timeSeconds;
     }
 
-    public void processVideos() {
-        Collections.sort(storage.list(), new Comparator<Advertisement>() {
-            @Override
-            public int compare(Advertisement o1, Advertisement o2) {
-                int result = Long.compare(o1.getAmountPerOneDisplaying(), o2.getAmountPerOneDisplaying());
-                if (result != 0)
-                    return -result;
-
-                long oneSecondCost1 = o1.getAmountPerOneDisplaying() * 1000 / o1.getDuration();
-                long oneSecondCost2 = o2.getAmountPerOneDisplaying() * 1000 / o2.getDuration();
-
-                return Long.compare(oneSecondCost1, oneSecondCost2);
-            }
-        });
-
-        int timeLeft = timeSeconds;
-        for (Advertisement advertisement : storage.list()) {
-            if (timeLeft < advertisement.getDuration()) {
-                continue;
-            }
-
-            ConsoleHelper.writeMessage(advertisement.getName() + " is displaying... "
-                    + advertisement.getAmountPerOneDisplaying() + ", "
-                    + advertisement.getAmountPerOneDisplaying() * 1000 / advertisement.getDuration());
-
-            timeLeft -= advertisement.getDuration();
-            advertisement.revalidate();
-        }
-
-        if (timeLeft == timeSeconds) {
+    public void processVideos(){
+        List<Advertisement> availableVideos = storage.list();
+//        List<Advertisement> showVideos = new ArrayList<>();
+//        int totalTime = 0;
+//        for (Advertisement video : availableVideos) {
+//            if (video.getDuration() < timeSeconds) {
+//                if ((totalTime + video.getDuration()) < timeSeconds){
+//                    totalTime =  totalTime + video.getDuration();
+//                    showVideos.add(video);
+//                }else totalTime =  totalTime;
+//            }
+//        }
+        if (availableVideos.isEmpty()) {
             throw new NoVideoAvailableException();
         }
+//        Collections.sort(availableVideos, new Comparator<Advertisement>() {
+//            @Override
+//            public int compare(Advertisement o1, Advertisement o2) {
+//                long pricePerVideoDiff = o2.getAmountPerOneDisplaying() - o1.getAmountPerOneDisplaying();
+//                if (pricePerVideoDiff != 0) {
+//                    return (int) pricePerVideoDiff;
+//                }else{
+//                    return (int)(o1.getAmountPerOneDisplaying() * 1000 / o1.getDuration() - o2.getAmountPerOneDisplaying() * 1000 / o2.getDuration());
+//                }
+//            }
+//        });
+////        int totalTime = timeSeconds;
+//        for (Advertisement adVideo : availableVideos) {
+////            if (adVideo.getDuration() <= totalTime && adVideo.getHits() > 0) {
+//
+//                ConsoleHelper.writeMessage(String.format("%s is displaying... %d, %d", adVideo.getName(),
+//                        adVideo.getAmountPerOneDisplaying(), adVideo.getAmountPerOneDisplaying() * 1000 / adVideo.getDuration()));
+//                adVideo.revalidate();
+////                totalTime -= adVideo.getDuration();
+////            }
+//        }
     }
 }

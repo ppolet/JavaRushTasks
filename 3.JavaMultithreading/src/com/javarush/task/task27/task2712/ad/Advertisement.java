@@ -6,10 +6,10 @@ package com.javarush.task.task27.task2712.ad;
 public class Advertisement {
     private Object content;
     private String name;
-    private long initialAmount;
-    private int hits;
-    private int duration;
-    private long amountPerOneDisplaying;
+    private long initialAmount;  //начальная сумма, стоимость рекламы в копейках
+    private int hits;   //количество оплаченных показов
+    private int duration;    // продолжительность в секундах
+    private long amountPerOneDisplaying;  //стоимость одного показа в копейках
 
     public Advertisement(Object content, String name, long initialAmount, int hits, int duration) {
         this.content = content;
@@ -32,9 +32,15 @@ public class Advertisement {
         return amountPerOneDisplaying;
     }
 
-    public void revalidate() {
-        if (hits <= 0)
+//    public int getHits()
+//    {
+//        return hits;
+//    }
+
+    public void revalidate(){
+        if (hits <= 0){
             throw new UnsupportedOperationException();
+        }
         hits--;
     }
 }

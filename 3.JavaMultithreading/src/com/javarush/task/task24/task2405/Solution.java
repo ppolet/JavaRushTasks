@@ -9,29 +9,33 @@ public class Solution implements Action {
     private int param;
 
     private Action solutionAction = new Action() {
+        //!!!!! Changes can be here
+        //!!!!! Изменения могут быть тут
+
         FirstClass firstClass;
         SecondClass secondClass;
 
         public void someAction() {
-            if (param > 0)
-            {
-                firstClass = new FirstClass()
-                {
+            //!!!!! All changes have to be here
+            //!!!!! Все изменения должны быть только тут
+
+            if (param > 0) {
+                firstClass = new FirstClass() {
                     @Override
-                    public Action getDependantAction()
-                    {
-                        return new Action()
-                        {
+                    public Action getDependantAction() {
+                        super.someAction();
+                        return new Action() {
                             @Override
-                            public void someAction()
-                            {
+                            public void someAction() {
                             }
                         };
                     }
                 };
-                int limit = param;
-                for (int i = 0; i < limit; i++)
-                    System.out.println(param--);
+
+                for (int i = 5; i > 0; i--)
+                    System.out.println(i);
+
+                param = 0;
                 firstClass.someAction();
             }
             secondClass = new SecondClass();
