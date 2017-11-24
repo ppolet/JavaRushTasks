@@ -13,5 +13,6 @@
     <orderEntry type="library" name="org.slf4j:slf4j-api:1.7.23" level="application" />
     <orderEntry type="library" name="google-collections-0.9" level="application" />
     <orderEntry type="library" name="org.apache.directory.studio:org.apache.commons.collections:3.2.1" level="application" />
+    <orderEntry type="module" module-name="3.JavaMultithreading" />
   </component>
 </module>
