@@ -11,7 +11,7 @@ Strategy strategy;
   public   List<Vacancy> getJavaVacancies(String searchString)
     {
 
-        return null;
+     return  strategy.getVacancies(searchString);
     }
 
     public Provider(Strategy strategy) {

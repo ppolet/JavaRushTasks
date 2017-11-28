@@ -1,23 +1,24 @@
 package com.javarush.task.task28.task2810;
 
+import com.javarush.task.task28.task2810.model.Model;
 import com.javarush.task.task28.task2810.model.Provider;
+import com.javarush.task.task28.task2810.vo.Vacancy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Controller {
-    Provider [] providers;
 
-    @Override
-    public String toString() {
-        return "Controller{" +
-                "providers=" + Arrays.toString(providers) +
-                '}';
+    Model model;
+
+    public Controller( Model model) throws IllegalAccessException {
+        this.model = model;
+        if (model == null) throw new IllegalArgumentException();
+
     }
 
-    public Controller(Provider...  providers) {
-
-        if(providers==null||providers.length==0) throw  new IllegalArgumentException();
-            this.providers = providers;
-
+    public void onCitySelect(String cityName) {
+        model.selectCity(cityName);
     }
 }
