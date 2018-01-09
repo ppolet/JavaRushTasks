@@ -19,11 +19,13 @@ public class Controller {
     public Controller() {
         view= new View(this);
         model= new Model();
+        view.init();
 
     }
 
     public static void main(String[] args) {
 
         Controller controller = new Controller();
+
     }
 }
